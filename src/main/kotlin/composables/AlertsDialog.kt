@@ -8,30 +8,38 @@ import androidx.compose.runtime.*
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun miAlertDialog(title: String, descr: String, value: Boolean): Boolean {
-    val open = remember { mutableStateOf(value) }
+fun miAlertDialog(
+    title: String,
+    descr: String,
+    openDialog: Boolean,
+    onDismiss: () -> Unit,
+    onConfirm: () -> Unit
+) {
 
-    AlertDialog(
 
-        onDismissRequest = {
-            open.value= false
-        },
-        title = { Text(text = title) },
-        text = { Text(text = descr) },
-        confirmButton = {
-            TextButton(onClick = {
-                open.value = false
-            }) {
-                Text(text = "OK")
+    if (openDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                onDismiss()
+            },
+            title = { Text(text = title) },
+            text = { Text(text = descr) },
+            confirmButton = {
+                TextButton(onClick = {
+                    onConfirm()
+
+                }) {
+                    Text(text = "OK")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    onDismiss()
+                }) {
+                    Text(text = "Cancel")
+                }
             }
-        },
-        dismissButton = {
-            TextButton(onClick = {
-                open.value = false
-            }) {
-                Text(text = "Cancel")
-            }
-        }
-    )
-    return open.value
+        )
+    }
+
 }

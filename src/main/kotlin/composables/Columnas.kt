@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.AttachFile
 import androidx.compose.material.icons.filled.Difference
 import androidx.compose.material.icons.filled.FileOpen
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,9 +25,11 @@ import java.io.File
 
 @Composable
 fun columnMain() {
-    val openDialog = remember { mutableStateOf(false) }
+    var openDialog by rememberSaveable { mutableStateOf(false) }
+    var confirm by rememberSaveable { mutableStateOf(false) }
     var progressBar by remember { mutableStateOf(false) }
     var fileExist by remember { mutableStateOf(false) }
+    var filenameOut by remember { mutableStateOf("") }
     var results by remember {
         mutableStateOf(
             ResultsFile(0, null, 0, 0, 0, false)
@@ -134,26 +137,32 @@ fun columnMain() {
         }
 
 
-        //buttonClean(mitxtResult,miTxt,results,itemCOmbo,delimiter,progressBar,fileExist)
         Button(
             onClick = {
 
                 mitxtResult = miTxt
 
-                CoroutineScope(Dispatchers.Default).launch {
-                    val filenameOut = miTxt.replace(".txt", " - clean.txt")
+                filenameOut = miTxt.replace(".txt", " - clean.txt")
+                fileExist = File(filenameOut).exists()
+                if (fileExist){
+                    openDialog = true
+                }else {
 
-                    if (File(filenameOut).exists()){
-                            println("el archivo existe")
-                    }else{
-                        println("el archivo no existe")
+
+
+                    micorutina {
+                        println("Hola Corutina")
+
+                        results = leerArchivoBuffer(miTxt, filenameOut, itemCOmbo, delimiter)
+                        println("results button: $results")
+                        progressBar = results.enabled
+
+                        println("chau Corutina")
+
                     }
-
-
-                    results = leerArchivoBuffer(miTxt, filenameOut, itemCOmbo, delimiter)
-                    println("results button: " + results)
-                    progressBar = results.enabled
                 }
+
+
 
                 progressBar = true
                 println("hola progres bar ${results.enabled}")
@@ -176,10 +185,7 @@ fun columnMain() {
                 color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier.padding(8.dp)
             )
-
         }
-
-
         cardResult(results)
         if (progressBar) {
             LinearProgressIndicator(
@@ -188,8 +194,40 @@ fun columnMain() {
 
         }
 
-        //miAlertDialog("advertencia", "el archivo de salida ya existe\n¿quiere reemplazarlo?", openDialog.value)
+       miAlertDialog(
+            "advertencia",
+            "el archivo de salida ya existe\n¿quiere reemplazarlo?",
+            openDialog,
+            { openDialog = false; progressBar = false},
+            {openDialog = false ; progressBar = true; confirm = true})
 
+        if(confirm){
+            micorutina {
+                confirm = false
+                println("Hola Corutina")
+
+                results = leerArchivoBuffer(miTxt, filenameOut, itemCOmbo, delimiter)
+                println("results button: $results")
+                progressBar = results.enabled
+
+                println("chau Corutina")
+
+            }
+        }
+
+
+
+
+
+
+
+
+    }
+}
+
+fun micorutina( body: () -> Unit){
+    CoroutineScope(Dispatchers.Default).launch {
+        body()
     }
 }
 

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -63,7 +64,7 @@ fun miOutlinedTextField(miLabel: String, miIcon: ImageVector): String {
 @Composable
 fun miTextButton(miLabel: String, miIcon: ImageVector) {
 
-    val openDialog = remember { mutableStateOf(false) }
+    var openDialog by rememberSaveable { mutableStateOf(false) }
 
     OutlinedTextField(
         readOnly = true,
@@ -85,7 +86,7 @@ fun miTextButton(miLabel: String, miIcon: ImageVector) {
                                    u.printStackTrace()
                                }
                            }else {
-                               openDialog.value=true
+                               openDialog =true
                            }
                        },
                            enabled = miLabel!= "File Out") {
@@ -98,7 +99,7 @@ fun miTextButton(miLabel: String, miIcon: ImageVector) {
         maxLines = 2,
         modifier = Modifier.fillMaxWidth(0.9f)
     )
-    if (openDialog.value) openDialog.value = miAlertDialog("ERROR", "El Archivo no exite",openDialog.value)
+    miAlertDialog("ERROR", "El Archivo no exite", openDialog, { openDialog = false }, { openDialog = false })
 }
 
 
