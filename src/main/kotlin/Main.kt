@@ -19,7 +19,7 @@ fun main() = application {
 
     Window(
         onCloseRequest = ::exitApplication,
-        title = "Clean Comments Z",
+        title = "Clean Comments",
         icon = painterResource("icons/azulblanco.jpg"),
         alwaysOnTop = false,
         resizable = false,

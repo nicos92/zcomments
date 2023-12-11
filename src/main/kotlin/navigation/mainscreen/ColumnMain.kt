@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import buffered.leerArchivoBuffer
@@ -25,6 +26,7 @@ import java.io.File
 
 @Composable
 fun columnMain() {
+    val focusRequester = remember { FocusRequester() }
     var openDialog by rememberSaveable { mutableStateOf(false) }
     var confirm by rememberSaveable { mutableStateOf(false) }
     var progressBar by remember { mutableStateOf(false) }
@@ -48,6 +50,7 @@ fun columnMain() {
 
         miTitulo("Clean Comments")
 
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -59,13 +62,13 @@ fun columnMain() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                miTxt = miOutlinedTextField("File In", Icons.Default.AttachFile)
+                miTxt = miTextdeEntrada("File In", Icons.Default.AttachFile)
                 miTooltip("*Busque o ingrese la ruta del archivo de entrada")
             }
 
             viewTextInfo(fileExist, miTxt)
         }
-        fileExist = miTxt.contains(".txt") && File(miTxt).exists()
+        fileExist = (miTxt.contains(".txt") || miTxt.contains(".TXT")) && File(miTxt).exists()
 
         Spacer(modifier = Modifier.padding(4.dp))
 
@@ -75,7 +78,7 @@ fun columnMain() {
             modifier = Modifier.fillMaxWidth()
         ) {
 
-            miTextButton(results.fileName ?: "File Out", Icons.Default.FileOpen)
+            miTextdeSalida(results.fileName ?: "File Out", Icons.Default.FileOpen, focusRequester)
             miTooltip("*Ruta de archivo de salida")
         }
 
@@ -94,8 +97,6 @@ fun columnMain() {
                     "//", "Select Delimeter", "*Seleccione el Delimitador de comentario",
                     delimeters, 1f
                 )
-
-
         }
 
         Button(
@@ -110,7 +111,6 @@ fun columnMain() {
                 }
                 progressBar = true
             },
-
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = MaterialTheme.colors.primary,
                 contentColor = MaterialTheme.colors.onPrimary
@@ -146,22 +146,30 @@ fun columnMain() {
         if (confirm) {
             miCoroutine {
                 confirm = false
+
                 results = leerArchivoBuffer(miTxt, filenameOut, itemCOmbo, delimiter)
-                println("results button: $results")
+
                 progressBar = results.enabled
+
+                focusRequester.requestFocus()
             }
+
         }
+
+
     }
 }
 
 @Composable
 private fun viewTextInfo(fileExist: Boolean, miTxt: String) {
-    if (fileExist)
-        textInfo("Archivo Valido", Color.DarkGray)
+    var filExist1: Boolean = fileExist
+    filExist1 = (miTxt.contains(".txt") || miTxt.contains(".TXT")) && File(miTxt).exists()
 
-    if (!fileExist && miTxt.hashCode() != 0 && miTxt.contains(".txt"))
+    if (filExist1)
+        textInfo("Archivo Valido", Color.DarkGray)
+    else if (!filExist1 && miTxt.hashCode() != 0 && (miTxt.contains(".TXT") || miTxt.contains(".txt")))
         textInfo("El archivo no existe, revise sintaxis", Color.Red)
-    else if (!miTxt.contains(".txt") && miTxt.hashCode() != 0)
+    else if ((miTxt.contains(".TXT") || !miTxt.contains(".txt")) && miTxt.hashCode() != 0)
         textInfo("El archivo no es de tipo txt", Color.Red)
 }
 
@@ -169,6 +177,7 @@ fun miCoroutine(body: () -> Unit) {
     CoroutineScope(Dispatchers.Default).launch {
         body()
     }
+
 }
 
 

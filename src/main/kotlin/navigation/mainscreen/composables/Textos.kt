@@ -12,6 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
@@ -20,8 +22,13 @@ import java.io.File
 import java.io.IOException
 import javax.swing.JFileChooser
 
+/**
+ * @param miLabel ingresa el label del text field
+ * @param miIcon ingresa el icono a mostrar
+ * @return el nombre de archivo de entrada
+ */
 @Composable
-fun miOutlinedTextField(miLabel: String, miIcon: ImageVector): String {
+fun miTextdeEntrada(miLabel: String, miIcon: ImageVector): String {
     var miTxt by remember { mutableStateOf("") }
 
     OutlinedTextField(
@@ -38,7 +45,6 @@ fun miOutlinedTextField(miLabel: String, miIcon: ImageVector): String {
                         val file = fc.selectedFile
                         miTxt = file.absolutePath
                     }
-                    println("Reader: $miTxt")
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -52,26 +58,29 @@ fun miOutlinedTextField(miLabel: String, miIcon: ImageVector): String {
         modifier = Modifier.fillMaxWidth(0.9f),
         textStyle = MaterialTheme.typography.body2,
         maxLines = 2
-
     )
-    return miTxt.lowercase()
+    return miTxt
 }
 
 
 /**
+ * @param miLabel muestra la etiqueta, si es distitnto a 'file out' muestra el nombre de archivo de salida
  * muestra el la ruta de archivo de salida
  * tiene un trailing icon para mostrarlo en su carpeta
  */
 @Composable
-fun miTextButton(miLabel: String, miIcon: ImageVector) {
+fun miTextdeSalida(miLabel: String, miIcon: ImageVector, focusRequester: FocusRequester) {
+
 
     var openDialog by rememberSaveable { mutableStateOf(false) }
 
     OutlinedTextField(
         readOnly = true,
         value = miLabel,
+        placeholder = {
+            Text("File Out")},
         onValueChange = {it},
-        enabled = miLabel != "File Out",
+        //enabled = miLabel != "File Out",
         label = { Text("File Out") },
         textStyle = MaterialTheme.typography.body2,
         trailingIcon = {
@@ -98,7 +107,7 @@ fun miTextButton(miLabel: String, miIcon: ImageVector) {
                        }
         },
         maxLines = 2,
-        modifier = Modifier.fillMaxWidth(0.9f)
+        modifier = Modifier.fillMaxWidth(0.9f).focusRequester(focusRequester)
     )
     miAlertDialog("ERROR", "El Archivo no exite", openDialog, { openDialog = false }, { openDialog = false })
 }
@@ -117,6 +126,10 @@ fun miTextResult(txtREsult: String) {
     )
 }
 
+/**
+ * @param txtResult se usa mostrar el texto de info
+ * @param miColor para cambiar deoende el texto
+ */
 @Composable
 fun textInfo(txtResult: String, miColor: Color) {
     Text(
@@ -130,6 +143,9 @@ fun textInfo(txtResult: String, miColor: Color) {
     )
 }
 
+/**
+ * @param titulo ingres el nombre del titulo
+ */
 @Composable
 fun miTitulo(titulo: String) {
     Text(
