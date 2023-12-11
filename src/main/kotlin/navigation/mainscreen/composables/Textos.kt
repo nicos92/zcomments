@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package composables
+package navigation.mainscreen.composables
 
 
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import java.io.File
 import java.io.IOException
@@ -117,14 +118,25 @@ fun miTextResult(txtREsult: String) {
 }
 
 @Composable
-fun textInfo(txtREsult: String, miColor: Color) {
+fun textInfo(txtResult: String, miColor: Color) {
     Text(
-        text = txtREsult,
+        text = txtResult,
         modifier = Modifier
            .padding(16.dp)
            .wrapContentWidth(Alignment.Start),
         style = MaterialTheme.typography.body2,
         color = miColor,
         maxLines = Int.MAX_VALUE
+    )
+}
+
+@Composable
+fun miTitulo(titulo: String) {
+    Text(
+        text = titulo,
+        style = MaterialTheme.typography.h5,
+        color = Color.Black,
+        fontFamily = FontFamily.Monospace,
+        modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 16.dp)
     )
 }

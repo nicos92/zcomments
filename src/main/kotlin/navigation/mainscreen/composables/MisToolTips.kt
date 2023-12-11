@@ -1,4 +1,4 @@
-package composables
+package navigation.mainscreen.composables
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.TooltipArea
@@ -31,10 +31,12 @@ fun miTooltip(toolTip: String) {
                 modifier = Modifier.padding(4.dp)
             )
         }
-    }) {
+    },
+        ) {
 
         IconButton(
             onClick = {/*TODO*/ },
+
 
             ) {
             Icon(
@@ -45,3 +47,5 @@ fun miTooltip(toolTip: String) {
         }
     }
 }
+
+

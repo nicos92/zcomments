@@ -1,4 +1,4 @@
-package composables
+package navigation.mainscreen.composables
 
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.ExperimentalMaterialApi

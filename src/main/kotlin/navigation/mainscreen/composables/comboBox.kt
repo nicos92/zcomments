@@ -1,4 +1,4 @@
-package composables
+package navigation.mainscreen.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
