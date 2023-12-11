@@ -10,23 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2881c87-4422-4333-84b2-06c846ba4094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/bottonbar/BottonBarScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/MainScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/MisRows.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/splashscreen/Splash.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/splashscreen/SplashScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/buffered/Buffereds.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/buffered/Buffereds.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/AlertsDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/AlertsDialog.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/Columnas.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/ColumnMain.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/MiImagen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/MiImagen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/MisCards.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/MisCards.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/MisToolTips.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/MisToolTips.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/Textos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/Textos.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/composables/comboBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/comboBox.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/ColumnMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/ColumnMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/MisToolTips.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/MisToolTips.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

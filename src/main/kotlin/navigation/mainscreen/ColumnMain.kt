@@ -63,13 +63,7 @@ fun columnMain() {
                 miTooltip("*Busque o ingrese la ruta del archivo de entrada")
             }
 
-            if (fileExist)
-                textInfo("Archivo Valido", Color.DarkGray)
-
-            if (!fileExist && miTxt.hashCode() != 0 && miTxt.contains(".txt"))
-                textInfo("El archivo no existe, revise sintaxis", Color.Red)
-            else if (!miTxt.contains(".txt") && miTxt.hashCode() != 0)
-                textInfo("El archivo no es de tipo txt", Color.Red)
+            viewTextInfo(fileExist, miTxt)
         }
         fileExist = miTxt.contains(".txt") && File(miTxt).exists()
 
@@ -158,6 +152,17 @@ fun columnMain() {
             }
         }
     }
+}
+
+@Composable
+private fun viewTextInfo(fileExist: Boolean, miTxt: String) {
+    if (fileExist)
+        textInfo("Archivo Valido", Color.DarkGray)
+
+    if (!fileExist && miTxt.hashCode() != 0 && miTxt.contains(".txt"))
+        textInfo("El archivo no existe, revise sintaxis", Color.Red)
+    else if (!miTxt.contains(".txt") && miTxt.hashCode() != 0)
+        textInfo("El archivo no es de tipo txt", Color.Red)
 }
 
 fun miCoroutine(body: () -> Unit) {

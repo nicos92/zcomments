@@ -12,6 +12,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Help
+import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,9 +41,9 @@ fun miTooltip(toolTip: String) {
 
             ) {
             Icon(
-                Icons.Default.Help, contentDescription = null,
-                tint = Color.LightGray,
-                modifier = Modifier.size(30.dp)
+                Icons.Default.HelpOutline, contentDescription = null,
+                tint = Color.DarkGray,
+                modifier = Modifier.size(25.dp)
             )
         }
     }
