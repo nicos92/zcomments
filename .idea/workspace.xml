@@ -11,10 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b2881c87-4422-4333-84b2-06c846ba4094" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/ColumnMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/ColumnMain.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/Textos.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/navigation/mainscreen/composables/Textos.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/navigation/bottonbar/BottonBarScreen.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/azulblanco.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/blanco.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/fileOrange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/drawable/filebasic.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,19 +68,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;P:/ZComments/src/main/resources/icons&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.1640625&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.34418604&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "P:/ZComments/src/main/resources/icons",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.1640625",
+    "project.structure.side.proportion": "0.34418604",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="P:\ZComments\src\main\resources\icons" />
